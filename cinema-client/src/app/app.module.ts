@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CinemaComponent } from './components/cinema/cinema.component';
+import {HttpClientModule} from "@angular/common/http";
+import {CinemaService} from "./services/cinema.service";
 
 @NgModule({
   declarations: [
@@ -12,9 +14,10 @@ import { CinemaComponent } from './components/cinema/cinema.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CinemaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
