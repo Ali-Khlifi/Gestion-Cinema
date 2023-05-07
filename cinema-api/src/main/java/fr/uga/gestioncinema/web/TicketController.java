@@ -5,14 +5,12 @@ import fr.uga.gestioncinema.entities.Ticket;
 import fr.uga.gestioncinema.service.TicketService;
 import fr.uga.gestioncinema.web.formes.TicketForm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class TicketController {
 
     @Autowired
