@@ -3,9 +3,11 @@
     <div class="col-md-4">
       <h4>liste des villes</h4>
       <ul *ngIf="villes" class="list-group">
-        <li *ngFor="let v of villes._embedded.villes" class="list-group-item"
+        <!-- Affichage des ville et selection de la ville courante -->
+        <li [ngClass]="v == currentVille?'active' : ''" *ngFor="let v of villes._embedded.villes" class="list-group-item clickable"
             (click)="OnGetCinema(v)">
-            {{v.name}}</li>
+          {{v.name}}
+        </li>
       </ul>
     </div>
     <div class="col-md-8">
@@ -13,10 +15,25 @@
         <div class="panel-heading"> liste des cinemas</div>
         <div class="panel-body">
           <ul *ngIf="cinemas" class="nav nav-pills">
-            <li *ngFor="let c of cinemas._embedded.cinemas" class="list-group-item">
-             <a> {{c.name}} </a>
+            <!-- Affichage des cinemas et selection du courant -->
+            <li [ngClass]="c == currentCinema? 'active': ''" *ngFor="let c of cinemas._embedded.cinemas" class="clickable">
+             <a (click)="OnGetSalles(c)"> {{c.name}} </a>
             </li>
           </ul>
+          <!-- Affichage des salles par cinema-->
+          <div class="row" *ngIf="salles">
+              <div *ngFor="let s of salles._embedded.salles">
+                <div class="col-md-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading"> {{s.name}}</div>
+                    <div class="panel-body" *ngIf="s.filmProjections">
+                      <h4>leeee</h4>
+                      <img src="{{serviceCinema.host + '/imageFilm/'+ s.filmProjection._embedded.filmProjections[0].film.titre}}">
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -9,7 +9,11 @@ import {CinemaService} from "../../services/cinema.service";
 export class CinemaComponent implements OnInit{
   public villes:any;
   public cinemas:any;
-  constructor( private serviceCinema: CinemaService) {
+  public currentVille :any;
+  public currentCinema :any;
+  public salles:any;
+  public projections: any;
+  constructor( public serviceCinema: CinemaService) {
   }
   ngOnInit() {
     this.serviceCinema.getVilles()
@@ -20,9 +24,29 @@ export class CinemaComponent implements OnInit{
       })
   }
   OnGetCinema(v: any) {
+    this.currentVille = v;
     this.serviceCinema.getCinema(v)
       .subscribe(data=>{
         this.cinemas = data;
+      }, error => {
+        console.log(error);
+      })
+  }
+
+  OnGetSalles(c:any) {
+    this.currentCinema = c;
+    this.serviceCinema.getSalles(c)
+      .subscribe(data=>{
+        this.salles = data;
+        // recuperation des projections une fois la salle est récupérée
+        this.salles._embedded.salles.forEach((salle: any) =>{
+          this.serviceCinema.getProjections(salle)
+            .subscribe(data=>{
+              salle.projections = data;
+            }, error => {
+              console.log(error);
+            })
+        })
       }, error => {
         console.log(error);
       })
