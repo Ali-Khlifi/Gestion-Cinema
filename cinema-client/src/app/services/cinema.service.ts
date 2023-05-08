@@ -1,5 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,9 @@ export class CinemaService {
 
   }
 
-  getProjections(salle:any) {
-    let url = salle._links.filmProjections.replace("{?filmProjection}", "");
-    return this.http.get(url + "?projection=p1")
-
-
+  getProjections(salle: any) {
+      let url = salle._links.filmProjections.href.replace("{?projection}", "");
+      return this.http.get(url + "?projection=p1");
   }
+
 }
