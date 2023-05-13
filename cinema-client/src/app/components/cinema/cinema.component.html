@@ -1,41 +1,54 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <h4>liste des villes</h4>
-      <ul *ngIf="villes" class="list-group">
-        <!-- Affichage des ville et selection de la ville courante -->
-        <li [ngClass]="v == currentVille?'active' : ''" *ngFor="let v of villes._embedded.villes" class="list-group-item clickable"
-            (click)="OnGetCinema(v)">
-          {{v.name}}
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-8">
-      <div class="panel-default">
-        <div class="panel-heading"> liste des cinemas</div>
-        <div class="panel-body">
-          <ul *ngIf="cinemas" class="nav nav-pills">
-            <!-- Affichage des cinemas et selection du courant -->
-            <li [ngClass]="c == currentCinema? 'active': ''" *ngFor="let c of cinemas._embedded.cinemas" class="clickable">
-             <a (click)="OnGetSalles(c)"> {{c.name}} </a>
-            </li>
-          </ul>
-          <!-- Affichage des salles par cinema-->
-          <div class="row" *ngIf="salles">
-              <div *ngFor="let s of salles._embedded.salles">
-                <div class="col-md-6">
-                  <div class="panel panel-default">
-                    <div class="panel-heading"> {{s.name}}</div>
-                    <div class="panel-body" *ngIf="s.filmProjections ">
-                      <img src="{{serviceCinema.host +'/imagesFilms/'+ (s.filmProjections?._embedded.filmProjections[0]?.film?.id)}}">
+  <div class="col-md-3">
+    <h4>liste des villes</h4>
+    <ul *ngIf="villes" class="list-group">
+      <!-- Affichage des ville et selection de la ville courante -->
+      <li [ngClass]="v == currentVille?'active' : ''" *ngFor="let v of villes._embedded.villes" class="list-group-item clickable"
+          (click)="OnGetCinema(v)">
+        {{v.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <div class="panel-default">
+      <div class="panel-heading"> liste des cinemas</div>
+      <div class="panel-body">
+        <ul *ngIf="cinemas" class="nav nav-pills">
+          <!-- Affichage des cinemas et selection du courant -->
+          <li [ngClass]="c == currentCinema? 'active': ''" *ngFor="let c of cinemas._embedded.cinemas" class="clickable">
+            <a (click)="OnGetSalles(c)"> {{c.name}} </a>
+          </li>
+        </ul>
+        <!-- Affichage des salles par cinema-->
+        <div class="row" *ngIf="salles">
+          <div *ngFor="let s of salles._embedded.salles">
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading"> {{s.name}}</div>
+                <div class="panel-body" *ngIf="s.filmProjections ">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <!--Recuperation des images pour chaque film-->
+                      <img width="150" src="{{serviceCinema.host +'/imagesFilms/'+ (s.filmProjections?._embedded.filmProjections[0]?.film?.id)}}">
                     </div>
+                    <div class="col-md-6">
+                      <!--Recuperation des séances -->
+                      <ul class="list-group">
+                        <li class="list-group-item"> Seances</li>
+                        <li *ngFor="let p of s.filmProjections._embedded.filmProjections" class="list-group-item">
+                          {{p.seance.heureDebut | date : 'HH:mm' }}  | Prix = {{p.prix |number : '0.00'}} €
+                        </li>
+                      </ul>
+
+                    </div>
+
                   </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

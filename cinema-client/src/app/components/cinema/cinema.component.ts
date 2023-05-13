@@ -13,6 +13,7 @@ export class CinemaComponent implements OnInit{
   public currentCinema :any;
   public salles:any;
   public filmProjections: any;
+  public seances :any;
   constructor( public serviceCinema: CinemaService) {
   }
   ngOnInit() {
