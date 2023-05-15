@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.config.Projection;
 
 import java.util.Date;
 
-@Projection(name = "filmProj", types = {Film.class})
+@Projection(name = "filmProj", types = Film.class)
 public interface FilmProj {
     public Long getId();
     public String getTitre();

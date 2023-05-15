@@ -44,7 +44,7 @@
                     <!--Affichage de places via les tickets de projections -->
                     <div *ngIf="currentProject">
                       <div  *ngIf="currentProject.salle.id == s.id">
-                        <div class ="row" *ngIf="currentProject.tickets">
+                        <div class ="row" *ngIf="currentProject">
                           <button class="btn btn-success ticket"  *ngFor="let t of currentProject.tickets._embedded.tickets">
                             {{t.place.numero}}
                           </button>
