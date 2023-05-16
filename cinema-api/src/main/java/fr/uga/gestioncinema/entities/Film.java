@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import java.util.Collection;
 import java.util.Date;
@@ -20,7 +21,8 @@ public class Film {
     private double duree;
     private String realisateur;
     private String description;
-    private String photo;
+    @Lob
+    private byte[] photo;
     private Date dateSortie;
     @OneToMany(mappedBy = "film")
 
@@ -29,7 +31,4 @@ public class Film {
     @ManyToOne // id_categorie est une clé étrangère dans films
     private Categorie categorie;
 
-    public String getPhoto() {
-        return this.photo;
-    }
 }
