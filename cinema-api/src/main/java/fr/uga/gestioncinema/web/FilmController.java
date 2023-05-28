@@ -48,24 +48,4 @@ public class FilmController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-    /*@GetMapping("/imageFilm/{id}")
-    public ResponseEntity<Resource> getImage(@PathVariable Long id) {
-        try{
-            String path = filmService.getFilm(id).getPhotoPath();
-
-            // load file from the filesystem
-            Path filePath = Paths.get(path);
-            Resource resource = new UrlResource(filePath.toUri());
-
-            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG)
-                    .body(resource);
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        return ResponseEntity.notFound().build();
-    }*/
-
-
-
 }

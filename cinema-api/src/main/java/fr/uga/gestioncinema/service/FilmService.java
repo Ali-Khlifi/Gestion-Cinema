@@ -28,7 +28,6 @@ public class FilmService implements IFilmService {
         Path path = Paths.get(filePath);
         return Files.readAllBytes(path);
     }
-
     @Override
     @Transactional
     public void saveFilmWithImage(Long id, MultipartFile imageFile) {
@@ -39,14 +38,9 @@ public class FilmService implements IFilmService {
             Files.write(path, imageFile.getBytes());
             film.setPhoto(fileName);
             filmRepository.save(film);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Méthode permettant de convertir les images en byte
-     */
 }
 
