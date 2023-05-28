@@ -22,8 +22,6 @@ export class CinemaComponent implements OnInit{
     this.serviceCinema.getVilles()
       .subscribe(data=>{
         this.villes = data;
-      }, error => {
-        console.log(error);
       })
   }
   OnGetCinema(v: any) {
