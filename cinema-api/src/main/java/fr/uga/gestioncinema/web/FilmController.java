@@ -21,11 +21,13 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 public class FilmController {
-
-    @Autowired
     private FilmRepository filmRepository;
-    @Autowired
     private FilmService filmService;
+
+    public FilmController(FilmRepository filmRepository, FilmService filmService){
+        this.filmRepository = filmRepository;
+        this.filmService = filmService;
+    }
 
     // listes des films
     @GetMapping(path = "/listFilms")
