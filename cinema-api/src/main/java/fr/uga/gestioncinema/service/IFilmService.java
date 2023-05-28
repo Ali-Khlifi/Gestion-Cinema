@@ -6,6 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 public interface IFilmService {
-    //byte [] readImages(Long id) throws IOException;
-    Film saveFilmWithImage(Film film, MultipartFile imageFile);
+    byte [] readImages(Long id) throws IOException;
+    void saveFilmWithImage(Long id, MultipartFile imageFile);
 }

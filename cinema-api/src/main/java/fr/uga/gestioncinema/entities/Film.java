@@ -1,17 +1,15 @@
 package fr.uga.gestioncinema.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import java.util.Collection;
 import java.util.Date;
 @Entity
-@Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Film {
@@ -21,8 +19,7 @@ public class Film {
     private double duree;
     private String realisateur;
     private String description;
-    @Lob
-    private byte[] photo;
+    private String photo;
     private Date dateSortie;
     @OneToMany(mappedBy = "film")
 
@@ -31,4 +28,75 @@ public class Film {
     @ManyToOne // id_categorie est une clé étrangère dans films
     private Categorie categorie;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public double getDuree() {
+        return duree;
+    }
+
+    public void setDuree(double duree) {
+        this.duree = duree;
+    }
+
+    public String getRealisateur() {
+        return realisateur;
+    }
+
+    public void setRealisateur(String realisateur) {
+        this.realisateur = realisateur;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public Date getDateSortie() {
+        return dateSortie;
+    }
+
+    public void setDateSortie(Date dateSortie) {
+        this.dateSortie = dateSortie;
+    }
+
+    public Collection<FilmProjection> getFilmProjections() {
+        return filmProjections;
+    }
+
+    public void setFilmProjections(Collection<FilmProjection> filmProjections) {
+        this.filmProjections = filmProjections;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
 }

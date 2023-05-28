@@ -4,6 +4,8 @@ import fr.uga.gestioncinema.dao.FilmRepository;
 import fr.uga.gestioncinema.entities.Film;
 import fr.uga.gestioncinema.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -29,24 +33,39 @@ public class FilmController {
         return filmRepository.findAll();
     }
 
-  /*  @GetMapping(path = "/imageFilm/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
+    @GetMapping(path = "/imageFilm/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> readImages(@PathVariable(name = "id")Long id) throws IOException {
         byte[] image = filmService.readImages(id);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
-    }*/
+    }
 
     @PostMapping(path = "/upload")
-    public void uploadImage(@RequestParam("id")Long id, @RequestParam("photo") MultipartFile file) {
-        Film film = filmService.getFilm(id);
-        filmService.saveFilmWithImage(film, file);
+    public ResponseEntity<?> uploadImage(@RequestParam("id")Long id, @RequestParam("photo") MultipartFile file) {
+        try {
+            filmService.saveFilmWithImage(id, file);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
-    @GetMapping("/imageFilm/{id}")
-    public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
-        byte[] image = filmService.getFilm(id).getPhoto();
-        final HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
-        return new ResponseEntity<byte[]>(image, headers, HttpStatus.CREATED);
-    }
+    /*@GetMapping("/imageFilm/{id}")
+    public ResponseEntity<Resource> getImage(@PathVariable Long id) {
+        try{
+            String path = filmService.getFilm(id).getPhotoPath();
+
+            // load file from the filesystem
+            Path filePath = Paths.get(path);
+            Resource resource = new UrlResource(filePath.toUri());
+
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG)
+                    .body(resource);
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResponseEntity.notFound().build();
+    }*/
+
 
 
 }
