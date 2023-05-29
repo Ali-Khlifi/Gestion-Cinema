@@ -16,7 +16,7 @@ export class CinemaComponent implements OnInit{
   public currentProject :any;
   tickets: any;
   currentSeance: any;
-  private selectedTickets: any[] = [];
+  public selectedTickets: any[] = [];
   constructor( public serviceCinema: CinemaService) {
   }
   ngOnInit() {
@@ -78,7 +78,6 @@ export class CinemaComponent implements OnInit{
     console.log(this.selectedTickets);
 
   }
-
   getTicketClass(t: any) {
     let str ="btn ticket ";
     if(t.reservee == true){
@@ -90,5 +89,17 @@ export class CinemaComponent implements OnInit{
     }
     return str;
 
+  }
+  onPayTickets(dataForm:any) {
+
+    let tickets: any[] = [];
+    this.selectedTickets.forEach(t => {tickets.push(t.id);
+    });
+    dataForm.tickets = tickets;
+    this.serviceCinema.payerTickets(dataForm)
+      .subscribe(data => {alert("Ticket Réservé ! Merci pour votre confiance")})
+
+    // recharger les tickets de la projection courante après reservation
+    this.OnGetTicketsPlaces(this.currentProject);
   }
 }

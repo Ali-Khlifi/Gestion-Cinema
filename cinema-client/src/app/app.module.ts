@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CinemaComponent } from './components/cinema/cinema.component';
 import {HttpClientModule} from "@angular/common/http";
 import {CinemaService} from "./services/cinema.service";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {CinemaService} from "./services/cinema.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [CinemaService],
   bootstrap: [AppComponent]
