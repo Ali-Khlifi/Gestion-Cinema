@@ -17,9 +17,8 @@ export class CinemaService {
   }
 
   getSalles(c:any) {
-    return this.http.get(c._links.salles.href);
-
-
+    let url = c._links.salles.href.replace("{?projection}", "");
+    return this.http.get(url + "?projection=salleProj");
   }
 
   getProjections(salle: any) {

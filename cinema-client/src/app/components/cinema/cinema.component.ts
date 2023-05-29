@@ -56,12 +56,10 @@ export class CinemaComponent implements OnInit{
 
   OnGetTicketsPlaces(p:any) {
     this.currentProject = p;
+    console.log(this.currentProject);
     this.serviceCinema.getTicketsPlaces(p)
       .subscribe(data => {
         this.currentProject.tickets = data;
-        console.log(data);
-      }, (error: any) => {
-        console.log(error);
       })
   }
 }

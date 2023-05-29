@@ -8,5 +8,6 @@
 }
 .ticket{
   margin:5px;
-  width:4%;
+  width:35px;
+  position:relative;
 }
