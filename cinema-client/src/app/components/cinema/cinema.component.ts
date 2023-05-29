@@ -16,6 +16,7 @@ export class CinemaComponent implements OnInit{
   public currentProject :any;
   tickets: any;
   currentSeance: any;
+  private selectedTickets: any[] = [];
   constructor( public serviceCinema: CinemaService) {
   }
   ngOnInit() {
@@ -56,10 +57,38 @@ export class CinemaComponent implements OnInit{
 
   OnGetTicketsPlaces(p:any) {
     this.currentProject = p;
-    console.log(this.currentProject);
     this.serviceCinema.getTicketsPlaces(p)
       .subscribe(data => {
         this.currentProject.tickets = data;
+        this.selectedTickets = [];
       })
+  }
+
+  OnSelectTicket(t: any) {
+    // initialize the selected ticket in true on click
+    if(!t.selected) {
+      // added a new selected ticket to the list
+      t.selected = true;
+      this.selectedTickets.push(t);
+    } else {
+      // removed a selected ticket from the list
+      t.selected = false;
+      this.selectedTickets.splice(this.selectedTickets.indexOf(t), 1);
+    }
+    console.log(this.selectedTickets);
+
+  }
+
+  getTicketClass(t: any) {
+    let str ="btn ticket ";
+    if(t.reservee == true){
+      str +=" btn-danger'"
+    }  else if (t.selected) {
+      str += "btn-warning";
+    } else {
+      str += "btn-success"
+    }
+    return str;
+
   }
 }

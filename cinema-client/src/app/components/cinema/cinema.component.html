@@ -42,10 +42,10 @@
                       </ul>
                     </div>
                     <!--Affichage de places via les tickets de projections -->
-                    <div *ngIf="currentProject">
+                    <div *ngIf="currentProject && currentProject.tickets">
                       <div  *ngIf="s.id == currentProject.salle.id">
                         <div class ="row" *ngIf="currentProject.tickets">
-                          <button [ngClass]="t.reservee==true?'btn-danger ticket' : 'btn btn-success ticket'"  *ngFor="let t of currentProject.tickets._embedded.tickets">
+                          <button class ="{{getTicketClass(t)}}" (click)="OnSelectTicket(t)" [disabled]="t.reservee"  *ngFor="let t of currentProject.tickets._embedded.tickets">
                             {{t.place.numero}}
                           </button>
                         </div>
