@@ -22,11 +22,12 @@ public class TicketService implements ITicketService {
     PlaceRepository placeRepository;
     @Autowired
     FilmProjectionRepository filmProjectionRepository;
+
     @Override
     public List<Ticket> payerTickets(TicketForm ticketForm) {
         // Creation d'une liste vide pour les tickets vendus pour les réserves
         List<Ticket> ticketsVendus = new ArrayList<>();
-        ticketForm.getTickets().forEach(idTicket ->{
+        ticketForm.getTickets().forEach(idTicket -> {
             Ticket ticket = ticketRepository.findById(idTicket).get();
             ticket.setNomClient(ticketForm.getNomClient());
             ticket.setReservee(true);
@@ -35,22 +36,23 @@ public class TicketService implements ITicketService {
         });
         return ticketsVendus;
     }
+
     @Override
     public Ticket addTicket(TicketForm ticketForm) {
         Ticket ticket = new Ticket();
         ticket.setNomClient(ticketForm.getNomClient());
         ticket.setCodePayement(ticketForm.getCodePayement());
-        ticket.setPrix(ticketForm.getPrix());
         ticket.setReservee(true);
 
         // Récupérer la place et la projection d'un film à partir de leurs ID et mise à jour de l'objet Ticket
-        Optional<Place> place = placeRepository.findById(ticketForm.getPlaceId());
-        Optional<FilmProjection> projection = filmProjectionRepository.findById(ticketForm.getFilmProjectionId());
+        //Optional<FilmProjection> projection = filmProjectionRepository.findById(ticketForm.getFilmProjectionId());
 
-        if(place.isPresent() && projection.isPresent()){
-            ticket.setPlace(place.get());
-            ticket.setFilmProjection(projection.get());
-        }
-        return ticketRepository.save(ticket);
+        //if(place.isPresent() && projection.isPresent()){
+        //ticket.setPlace(place.get());
+        //ticket.setFilmProjection(projection.get());
+
+        //return ticketRepository.save(ticket);
+        //}
+        return ticket;
     }
 }
