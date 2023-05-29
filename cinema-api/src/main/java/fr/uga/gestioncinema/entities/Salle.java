@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import java.util.Collection;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Salle {
@@ -30,4 +29,52 @@ public class Salle {
     @OneToMany(mappedBy = "salle")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Collection<FilmProjection> filmProjections;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getNombrePlaces() {
+        return nombrePlaces;
+    }
+
+    public void setNombrePlaces(int nombrePlaces) {
+        this.nombrePlaces = nombrePlaces;
+    }
+
+    public Cinema getCinema() {
+        return cinema;
+    }
+
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
+    }
+
+    public Collection<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(Collection<Place> places) {
+        this.places = places;
+    }
+
+    public Collection<FilmProjection> getFilmProjections() {
+        return filmProjections;
+    }
+
+    public void setFilmProjections(Collection<FilmProjection> filmProjections) {
+        this.filmProjections = filmProjections;
+    }
 }

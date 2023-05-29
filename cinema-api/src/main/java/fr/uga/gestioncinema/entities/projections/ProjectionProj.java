@@ -1,4 +1,4 @@
-package fr.uga.gestioncinema.entities.interfaces;
+package fr.uga.gestioncinema.entities.projections;
 
 import fr.uga.gestioncinema.entities.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,7 +12,8 @@ public interface ProjectionProj {
     public Long getId();
     public double getPrix();
     public Date getDateProjection();
-    public Salle getSalle();
+    @Value("#{target.salle}")
+    public SalleProj getSalle();
     @Value("#{target.film}")
     public FilmProj getFilm();
     public Seance getSeance();

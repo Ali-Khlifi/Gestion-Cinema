@@ -1,4 +1,4 @@
-package fr.uga.gestioncinema.entities.interfaces;
+package fr.uga.gestioncinema.entities.projections;
 
 import fr.uga.gestioncinema.entities.Film;
 import org.springframework.data.rest.core.config.Projection;
