@@ -22,7 +22,6 @@ public class Film {
     private String photo;
     private Date dateSortie;
     @OneToMany(mappedBy = "film")
-
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // pour bloquer l'affichage des projection (en lecture)// lors de la consultation des films
     private Collection<FilmProjection> filmProjections;
     @ManyToOne // id_categorie est une clé étrangère dans films

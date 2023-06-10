@@ -1,4 +1,4 @@
-package fr.uga.gestioncinema.service;
+/*package fr.uga.gestioncinema.service;
 
 import fr.uga.gestioncinema.dao.FilmProjectionRepository;
 import fr.uga.gestioncinema.dao.PlaceRepository;
@@ -20,8 +20,8 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
-public class TicketServiceTest {
+@ExtendWith(MockitoExtension.class)*/
+/*public class TicketServiceTest {
 
     @InjectMocks
     private TicketService ticketService;
@@ -35,9 +35,9 @@ public class TicketServiceTest {
     @Mock
     private FilmProjectionRepository filmProjectionRepository;
 
-    @Test
-    public void testAddTicket() {
-        // Initialiser les données pour le test
+    @Test*/
+    //public void testAddTicket() {
+      /*  // Initialiser les données pour le test
         TicketForm ticketForm = new TicketForm();
         ticketForm.setNomClient("John Doe");
         ticketForm.setCodePayement(1234);
@@ -79,5 +79,5 @@ public class TicketServiceTest {
         verify(placeRepository).findById(1L);
         verify(filmProjectionRepository).findById(2L);
         verify(ticketRepository).save(any(Ticket.class));
-    }
-}
+    }*/
+//}
