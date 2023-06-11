@@ -1,7 +1,8 @@
-package fr.uga.gestioncinema.service;
+package fr.uga.gestioncinema.service.impl;
 
 import fr.uga.gestioncinema.dao.FilmRepository;
 import fr.uga.gestioncinema.entities.Film;
+import fr.uga.gestioncinema.service.IFilmService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 @Service
 public class FilmService implements IFilmService {
@@ -42,5 +44,6 @@ public class FilmService implements IFilmService {
             e.printStackTrace();
         }
     }
+
 }
 

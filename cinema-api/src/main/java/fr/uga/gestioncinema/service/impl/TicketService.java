@@ -1,4 +1,4 @@
-package fr.uga.gestioncinema.service;
+package fr.uga.gestioncinema.service.impl;
 
 import fr.uga.gestioncinema.dao.FilmProjectionRepository;
 import fr.uga.gestioncinema.dao.PlaceRepository;
@@ -6,6 +6,7 @@ import fr.uga.gestioncinema.dao.TicketRepository;
 import fr.uga.gestioncinema.entities.FilmProjection;
 import fr.uga.gestioncinema.entities.Place;
 import fr.uga.gestioncinema.entities.Ticket;
+import fr.uga.gestioncinema.service.ITicketService;
 import fr.uga.gestioncinema.web.formes.TicketForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -28,7 +28,44 @@ paths:
                   type: array
                   items:
                       $ref: '#/components/schemas/FilmOpenApiModel'
+    post:
+      tags:
+        - Film
+      summary: 'create new film'
+      operationId: create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilmOpenApiModel'
+      responses:
+        '201':
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FilmOpenApiModel'
+    put:
+      tags:
+        - Film
+      summary: 'Update existing film'
+      operationId: update
+      requestBody:
+        description: 'Update existing film'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilmOpenApiModel'
 
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FilmOpenApiModel'
 
         '404':
           description: 'NOT FOUND'
@@ -37,7 +74,56 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /film/{id}:
+    get:
+      tags:
+        - Film
+      summary: 'Specific Film'
+      operationId: findOne
+      parameters:
+        - name: id
+          in: path
+          description: 'Find a Film by its id'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FilmOpenApiModel'
+        '404':
+          description: 'NOT FOUND'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
+    delete:
+      tags:
+        - Film
+      summary: 'delete a Film'
+      operationId: delete
+      parameters:
+        - name: id
+          in: path
+          description: 'Find a Film by its id'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: DELETED
+        '404':
+          description: 'NOT FOUND'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
 components:
   schemas:
