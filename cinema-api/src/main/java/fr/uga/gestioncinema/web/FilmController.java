@@ -2,7 +2,12 @@ package fr.uga.gestioncinema.web;
 
 import fr.uga.gestioncinema.dao.FilmRepository;
 import fr.uga.gestioncinema.entities.Film;
-import fr.uga.gestioncinema.service.impl.FilmService;
+import fr.uga.gestioncinema.mappers.FilmMapper;
+import fr.uga.gestioncinema.service.FilmService;
+import fr.uga.gestioncinema.service.imp.FilmServiceImp;
+import lombok.RequiredArgsConstructor;
+import org.openapitools.api.FilmApi;
+import org.openapitools.model.FilmOpenApiModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +18,14 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @CrossOrigin("*")
-public class FilmController {
-    private FilmRepository filmRepository;
-    private FilmService filmService;
+public class FilmController implements FilmApi {
 
-    public FilmController(FilmRepository filmRepository, FilmService filmService){
-        this.filmRepository = filmRepository;
-        this.filmService = filmService;
-    }
+    private final FilmService filmService;
+    private final FilmRepository filmRepository;
+    private final FilmMapper filmMapper;
+
 
     // listes des films
     @GetMapping(path = "/listFilms")
@@ -44,4 +48,9 @@ public class FilmController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    @Override
+    public ResponseEntity<FilmOpenApiModel> findOne (final Long id) {
+        return ResponseEntity.ok().body(filmMapper.toOpenApiModel(filmService.fetchOne(id)));
+    }
+
 }

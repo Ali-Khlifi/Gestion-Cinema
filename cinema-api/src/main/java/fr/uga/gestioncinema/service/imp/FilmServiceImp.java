@@ -1,9 +1,13 @@
-package fr.uga.gestioncinema.service.impl;
+package fr.uga.gestioncinema.service.imp;
 
 import fr.uga.gestioncinema.dao.FilmRepository;
+import fr.uga.gestioncinema.dto.FilmDto;
 import fr.uga.gestioncinema.entities.Film;
-import fr.uga.gestioncinema.service.IFilmService;
+import fr.uga.gestioncinema.exceptions.NotFoundException;
+import fr.uga.gestioncinema.mappers.FilmMapper;
+import fr.uga.gestioncinema.service.FilmService;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,15 +15,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Optional;
+
+import static fr.uga.gestioncinema.utils.StringUtils.Exceptions.NO_DATA;
+
 
 @Service
-public class FilmService implements IFilmService {
+@RequiredArgsConstructor
+public class FilmServiceImp implements FilmService {
     private final FilmRepository filmRepository;
+    private final FilmMapper filmMapper;
 
-    public FilmService(FilmRepository filmRepository) {
-        this.filmRepository = filmRepository;
-    }
+
     @Override
     public byte[] readImages(Long id) throws IOException {
         Film f = filmRepository.findById(id).get();
@@ -43,6 +49,12 @@ public class FilmService implements IFilmService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public FilmDto fetchOne(Long id) {
+        return filmMapper.toDto(filmRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(NO_DATA)));
     }
 
 }

@@ -1,22 +1,18 @@
-package fr.uga.gestioncinema.service.impl;
+package fr.uga.gestioncinema.service.imp;
 
 import fr.uga.gestioncinema.dao.FilmProjectionRepository;
 import fr.uga.gestioncinema.dao.PlaceRepository;
 import fr.uga.gestioncinema.dao.TicketRepository;
-import fr.uga.gestioncinema.entities.FilmProjection;
-import fr.uga.gestioncinema.entities.Place;
 import fr.uga.gestioncinema.entities.Ticket;
-import fr.uga.gestioncinema.service.ITicketService;
 import fr.uga.gestioncinema.web.formes.TicketForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class TicketService implements ITicketService {
+public class TicketService implements fr.uga.gestioncinema.service.TicketService {
     @Autowired
     TicketRepository ticketRepository;
     @Autowired

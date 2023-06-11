@@ -5,7 +5,7 @@ import fr.uga.gestioncinema.web.formes.TicketForm;
 
 import java.util.List;
 
-public interface ITicketService {
+public interface TicketService {
     List<Ticket> payerTickets(TicketForm ticketForm);
     Ticket addTicket(TicketForm ticketForm);
 }
