@@ -1,6 +1,5 @@
 package fr.uga.gestioncinema.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,6 +15,6 @@ public class FilmDto {
     private String description;
     private String photo;
     private LocalDateTime dateSortie;
-    private CategorieDto categorie;
+    private CategoryDto category;
 
 }

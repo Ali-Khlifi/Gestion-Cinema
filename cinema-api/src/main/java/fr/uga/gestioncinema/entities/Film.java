@@ -1,10 +1,8 @@
 package fr.uga.gestioncinema.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Type;
 
 import java.util.Collection;
 import java.util.Date;
@@ -25,7 +23,7 @@ public class Film {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // pour bloquer l'affichage des projection (en lecture)// lors de la consultation des films
     private Collection<FilmProjection> filmProjections;
     @ManyToOne // id_categorie est une clé étrangère dans films
-    private Categorie categorie;
+    private Category category;
 
     public Long getId() {
         return id;
@@ -91,11 +89,11 @@ public class Film {
         this.filmProjections = filmProjections;
     }
 
-    public Categorie getCategorie() {
-        return categorie;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

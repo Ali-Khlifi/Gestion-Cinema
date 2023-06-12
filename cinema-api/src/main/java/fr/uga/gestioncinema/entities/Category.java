@@ -11,12 +11,12 @@ import java.util.Collection;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Categorie {
+public class Category {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 75)
     private String name;
-    @OneToMany(mappedBy = "categorie")
+    @OneToMany(mappedBy = "category")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // pour bloquer l'affichage des films
     // lors de la consultation des categories
     private Collection<Film> films;

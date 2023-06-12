@@ -217,14 +217,14 @@
                     </configuration>
                 </execution>
                     <execution>
-                        <id>categorie</id>
+                        <id>category</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${apifile}/categorie.yaml</inputSpec>
+                            <inputSpec>${apifile}/category.yaml</inputSpec>
                             <importMappings>
-                                <importMapping>CategoriePage=${springpage}</importMapping>
+                                <importMapping>CategoryPage=${springpage}</importMapping>
                             </importMappings>
                         </configuration>
                     </execution>
