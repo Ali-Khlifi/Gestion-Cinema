@@ -2,7 +2,7 @@ package fr.uga.gestioncinema.web;
 
 import fr.uga.gestioncinema.dao.TicketRepository;
 import fr.uga.gestioncinema.entities.Ticket;
-import fr.uga.gestioncinema.service.imp.TicketService;
+import fr.uga.gestioncinema.service.impl.TicketService;
 import fr.uga.gestioncinema.web.formes.TicketForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package fr.uga.gestioncinema.service.imp;
+package fr.uga.gestioncinema.service.impl;
 
 import fr.uga.gestioncinema.dao.FilmProjectionRepository;
 import fr.uga.gestioncinema.dao.PlaceRepository;

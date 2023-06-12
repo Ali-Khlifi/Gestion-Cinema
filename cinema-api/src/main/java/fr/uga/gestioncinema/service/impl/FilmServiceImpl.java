@@ -1,4 +1,4 @@
-package fr.uga.gestioncinema.service.imp;
+package fr.uga.gestioncinema.service.impl;
 
 import fr.uga.gestioncinema.dao.FilmRepository;
 import fr.uga.gestioncinema.dto.FilmDto;
@@ -21,7 +21,7 @@ import static fr.uga.gestioncinema.utils.StringUtils.Exceptions.NO_DATA;
 
 @Service
 @RequiredArgsConstructor
-public class FilmServiceImp implements FilmService {
+public class FilmServiceImpl implements FilmService {
     private final FilmRepository filmRepository;
     private final FilmMapper filmMapper;
 
