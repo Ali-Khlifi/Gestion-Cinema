@@ -1,13 +1,14 @@
-package fr.uga.gestioncinema.dao;
+package fr.uga.gestioncinema.repositories;
 
-import fr.uga.gestioncinema.entities.Cinema;
-import fr.uga.gestioncinema.entities.Salle;
+import fr.uga.gestioncinema.entities.Film;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RepositoryRestResource
+@Transactional
 @CrossOrigin("*")
-public interface SalleRepository extends JpaRepository<Salle, Long> {
+public interface FilmRepository extends JpaRepository<Film, Long> {
 
 }

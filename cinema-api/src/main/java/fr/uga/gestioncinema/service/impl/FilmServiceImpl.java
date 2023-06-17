@@ -1,6 +1,6 @@
 package fr.uga.gestioncinema.service.impl;
 
-import fr.uga.gestioncinema.dao.FilmRepository;
+import fr.uga.gestioncinema.repositories.FilmRepository;
 import fr.uga.gestioncinema.dto.FilmDto;
 import fr.uga.gestioncinema.entities.Film;
 import fr.uga.gestioncinema.exceptions.NotFoundException;

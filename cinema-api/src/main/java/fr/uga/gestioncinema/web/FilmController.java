@@ -1,6 +1,6 @@
 package fr.uga.gestioncinema.web;
 
-import fr.uga.gestioncinema.dao.FilmRepository;
+import fr.uga.gestioncinema.repositories.FilmRepository;
 import fr.uga.gestioncinema.entities.Film;
 import fr.uga.gestioncinema.mappers.FilmMapper;
 import fr.uga.gestioncinema.service.FilmService;

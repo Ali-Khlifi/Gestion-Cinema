@@ -1,4 +1,4 @@
-package fr.uga.gestioncinema.dao;
+package fr.uga.gestioncinema.repositories;
 
 import fr.uga.gestioncinema.entities.Category;
 import org.springframework.data.jpa.repository.JpaRepository;

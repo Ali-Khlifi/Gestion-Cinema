@@ -1,8 +1,8 @@
 package fr.uga.gestioncinema.service.impl;
 
-import fr.uga.gestioncinema.dao.FilmProjectionRepository;
-import fr.uga.gestioncinema.dao.PlaceRepository;
-import fr.uga.gestioncinema.dao.TicketRepository;
+import fr.uga.gestioncinema.repositories.FilmProjectionRepository;
+import fr.uga.gestioncinema.repositories.PlaceRepository;
+import fr.uga.gestioncinema.repositories.TicketRepository;
 import fr.uga.gestioncinema.entities.Ticket;
 import fr.uga.gestioncinema.web.formes.TicketForm;
 import org.springframework.beans.factory.annotation.Autowired;
