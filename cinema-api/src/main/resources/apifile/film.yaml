@@ -99,7 +99,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
     delete:
       tags:
         - Film
@@ -116,6 +115,71 @@ paths:
       responses:
         '204':
           description: DELETED
+        '404':
+          description: 'NOT FOUND'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /film/{id}/upload:
+    post:
+      tags:
+        - Film
+      summary: 'Upload image for a film'
+      operationId: uploadImage
+      parameters:
+        - name: id
+          in: path
+          description: id of the film
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                photo:
+                  type: string
+                  format: binary
+                  description: 'The image file to upload'
+      responses:
+        '200':
+          description: 'OK saved image successfully'
+        '400':
+          description: 'Bad request, incorrect or missing parameters'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /imageFilm/{id}:
+    get:
+      tags:
+        - Film
+      summary: 'get image from a film'
+      operationId: readImages
+      parameters:
+        - name: id
+          in: path
+          description: 'Find image film by its id'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'OK succeeded'
+          content:
+            application/avro:
+              schema:
+                type: string
+                format: byte
+
         '404':
           description: 'NOT FOUND'
           content:
