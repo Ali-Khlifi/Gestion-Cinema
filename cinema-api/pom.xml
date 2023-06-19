@@ -228,6 +228,18 @@
                             </importMappings>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>ville</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${apifile}/ville.yaml</inputSpec>
+                            <importMappings>
+                                <importMapping>VillePage=${springpage}</importMapping>
+                            </importMappings>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
