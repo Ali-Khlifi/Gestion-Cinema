@@ -81,6 +81,12 @@ public class FilmController implements FilmApi {
         byte[] image = filmService.readImages(id);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
     }*/
+
+    @Override
+    public ResponseEntity<Void> delete(Long id) throws Exception {
+        filmService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
 
 
