@@ -264,6 +264,18 @@
                             </importMappings>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>place</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${apifile}/place.yaml</inputSpec>
+                            <importMappings>
+                                <importMapping>PlacePage=${springpage}</importMapping>
+                            </importMappings>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
