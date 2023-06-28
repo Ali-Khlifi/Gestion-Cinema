@@ -130,8 +130,6 @@ components:
       required:
           - name
           - nombrePlaces
-          - places
-          - filmProjections
           - cinema
       properties:
         id:
@@ -141,46 +139,8 @@ components:
           type: string
         nombrePlaces:
           type: integer
-        places:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaceOpenApiModel'
-        filmProjections:
-          type: array
-          items:
-            $ref: '#/components/schemas/FilmProjectionOpenApiModel'
         cinema:
           $ref: '#/components/schemas/CinemaOpenApiModel'
-
-
-    'PlaceOpenApiModel':
-      description: 'Object representing a currently accessible ressource'
-      type: object
-      required:
-        - numero
-      properties:
-        id:
-          type: integer
-          format: int64
-        numero:
-          type: integer
-
-    'FilmProjectionOpenApiModel':
-      description: 'Object representing a currently accessible ressource'
-      type: object
-      required:
-        - dateProjection
-        - prix
-      properties:
-        id:
-          type: integer
-          format: int64
-        dateProjection:
-          type: string
-          format: date-time
-        prix:
-          type: number
-          format: double
 
     'CinemaOpenApiModel':
       description: 'Object representing a currently accessible ressource'
@@ -191,6 +151,7 @@ components:
         - latitude
         - altitude
         - nombreSalles
+        - ville
       properties:
         id:
           type: integer
@@ -208,6 +169,33 @@ components:
           format: double
         nombreSalles:
           type: integer
+        ville:
+          $ref: '#/components/schemas/VilleOpenApiModel'
+
+    'VilleOpenApiModel':
+      type: object
+      required:
+        - name
+        - longitude
+        - latitude
+        - altitude
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        longitude:
+          type: number
+          format: double
+        latitude:
+          type: number
+          format: double
+        altitude:
+          type: number
+          format: double
+
+
 
     Error:
       description: 'format message for error return HTTP'

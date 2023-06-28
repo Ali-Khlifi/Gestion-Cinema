@@ -5,6 +5,7 @@ import fr.uga.gestioncinema.dto.PlaceDto;
 import fr.uga.gestioncinema.entities.Place;
 import jakarta.validation.Valid;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.openapitools.model.PlaceOpenApiModel;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Mapper(config = MapperConfig.class)
 public interface PlaceMapper {
 
+    @Mapping(target = "salle", ignore = true)
     PlaceDto toDto(Place placeEntity);
     Place toEntity(PlaceDto dto);
 

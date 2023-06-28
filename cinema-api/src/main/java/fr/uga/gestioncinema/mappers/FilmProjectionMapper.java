@@ -5,6 +5,7 @@ import fr.uga.gestioncinema.dto.FilmProjectionDto;
 import fr.uga.gestioncinema.entities.FilmProjection;
 import jakarta.validation.Valid;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.openapitools.model.FilmProjectionOpenApiModel;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Mapper(config = MapperConfig.class)
 public interface FilmProjectionMapper {
 
+    @Mapping(target = "salle", ignore = true)
     FilmProjectionDto toDto(FilmProjection entity);
     FilmProjection toEntity(FilmProjectionDto dto);
 

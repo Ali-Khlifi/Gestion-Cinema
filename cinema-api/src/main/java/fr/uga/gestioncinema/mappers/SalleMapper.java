@@ -10,7 +10,7 @@ import org.openapitools.model.SalleOpenApiModel;
 
 import java.util.List;
 
-@Mapper(config = MapperConfig.class)
+@Mapper(config = MapperConfig.class, uses = {PlaceMapper.class, FilmProjectionMapper.class})
 public interface SalleMapper {
 
     SalleDto toDto(Salle salleEntity);
