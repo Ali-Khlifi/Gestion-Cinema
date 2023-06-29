@@ -1,14 +1,10 @@
 package fr.uga.gestioncinema.service.impl;
 
-import fr.uga.gestioncinema.dto.CinemaDto;
-import fr.uga.gestioncinema.dto.SeanceDto;
+import fr.uga.gestioncinema.dto.FilmProjectionDto;
 import fr.uga.gestioncinema.exceptions.NotFoundException;
-import fr.uga.gestioncinema.mappers.CinemaMapper;
-import fr.uga.gestioncinema.mappers.SeanceMapper;
-import fr.uga.gestioncinema.repositories.CinemaRepository;
-import fr.uga.gestioncinema.repositories.SeanceRepository;
-import fr.uga.gestioncinema.service.CinemaService;
-import fr.uga.gestioncinema.service.SeanceService;
+import fr.uga.gestioncinema.mappers.FilmProjectionMapper;
+import fr.uga.gestioncinema.repositories.FilmProjectionRepository;
+import fr.uga.gestioncinema.service.FilmProjectionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,23 +15,23 @@ import static fr.uga.gestioncinema.utils.StringUtils.Exceptions.NO_DATA;
 
 @Service
 @RequiredArgsConstructor
-public class SeanceServiceImpl implements SeanceService {
-    private final SeanceRepository repository;
-    private final SeanceMapper mapper;
+public class FilmProjectionServiceImpl implements FilmProjectionService {
+    private final FilmProjectionRepository repository;
+    private final FilmProjectionMapper mapper;
 
     @Override
-    public SeanceDto fetchOne(Long id) {
+    public FilmProjectionDto fetchOne(Long id) {
         return mapper.toDto(repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(NO_DATA)));
     }
 
     @Override
-    public SeanceDto save(SeanceDto dto) {
+    public FilmProjectionDto save(FilmProjectionDto dto) {
         return mapper.toDto(repository.save(mapper.toEntity(dto)));
     }
 
     @Override
-    public List<SeanceDto> fetchAll() {
+    public List<FilmProjectionDto> fetchAll() {
         return repository.findAll()
                 .stream()
                 .map(mapper::toDto)
@@ -43,13 +39,13 @@ public class SeanceServiceImpl implements SeanceService {
     }
 
     @Override
-    public SeanceDto update(SeanceDto dto) {
-        final var seance = repository.findById(dto.getId())
+    public FilmProjectionDto update(FilmProjectionDto dto) {
+        final var filmProjection = repository.findById(dto.getId())
                 .orElseThrow(() -> new NotFoundException(NO_DATA));
 
-        mapper.update(dto, seance);
+        mapper.update(dto, filmProjection);
 
-        return mapper.toDto(repository.save(seance));
+        return mapper.toDto(repository.save(filmProjection));
     }
 
     @Override

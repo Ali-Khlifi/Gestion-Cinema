@@ -11,10 +11,9 @@ import org.openapitools.model.FilmProjectionOpenApiModel;
 
 import java.util.List;
 
-@Mapper(config = MapperConfig.class)
+@Mapper(config = MapperConfig.class,  uses = {SeanceMapper.class, FilmMapper.class, SalleMapper.class})
 public interface FilmProjectionMapper {
 
-    @Mapping(target = "salle", ignore = true)
     FilmProjectionDto toDto(FilmProjection entity);
     FilmProjection toEntity(FilmProjectionDto dto);
 
