@@ -130,7 +130,7 @@ components:
       required:
           - name
           - nombrePlaces
-          - cinema
+          - cinemaId
       properties:
         id:
           type: integer
@@ -139,63 +139,9 @@ components:
           type: string
         nombrePlaces:
           type: integer
-        cinema:
-          $ref: '#/components/schemas/CinemaOpenApiModel'
-
-    'CinemaOpenApiModel':
-      description: 'Object representing a currently accessible ressource'
-      type: object
-      required:
-        - name
-        - longitude
-        - latitude
-        - altitude
-        - nombreSalles
-        - ville
-      properties:
-        id:
+        cinemaId:
           type: integer
           format: int64
-        name:
-          type: string
-        longitude:
-          type: number
-          format: double
-        latitude:
-          type: number
-          format: double
-        altitude:
-          type: number
-          format: double
-        nombreSalles:
-          type: integer
-        ville:
-          $ref: '#/components/schemas/VilleOpenApiModel'
-
-    'VilleOpenApiModel':
-      type: object
-      required:
-        - name
-        - longitude
-        - latitude
-        - altitude
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        longitude:
-          type: number
-          format: double
-        latitude:
-          type: number
-          format: double
-        altitude:
-          type: number
-          format: double
-
-
 
     Error:
       description: 'format message for error return HTTP'

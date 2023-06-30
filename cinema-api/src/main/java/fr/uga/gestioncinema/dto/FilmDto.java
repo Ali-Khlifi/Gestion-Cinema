@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Data
 @Builder
@@ -15,6 +16,7 @@ public class FilmDto {
     private String description;
     private String photo;
     private LocalDateTime dateSortie;
-    private CategoryDto category;
+    private Long categoryId;
+    private Collection<FilmProjectionDto> filmProjections;
 
 }

@@ -132,7 +132,7 @@ components:
         - latitude
         - altitude
         - numero
-        - salle
+        - salleId
       properties:
         id:
           type: integer
@@ -148,23 +148,9 @@ components:
           format: double
         numero:
           type: integer
-        salle:
-          $ref: '#/components/schemas/SalleOpenApiModel'
-
-    'SalleOpenApiModel':
-      description: 'Object representing a currently accessible ressource'
-      type: object
-      required:
-        - name
-        - nombrePlaces
-      properties:
-        id:
+        salleId:
           type: integer
           format: int64
-        name:
-          type: string
-        nombrePlaces:
-          type: integer
 
     Error:
       description: 'format message for error return HTTP'

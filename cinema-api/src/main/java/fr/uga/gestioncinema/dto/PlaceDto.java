@@ -10,5 +10,5 @@ public class PlaceDto {
     private int numero;
     private double longitude, latitude, altitude;
 
-    private SalleDto salle;
+    private Long salleId;
 }

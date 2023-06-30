@@ -18,7 +18,7 @@ public class SalleDto {
     private Long id;
     private String name;
     private int nombrePlaces;
-    private Cinema cinema;
+    private Long cinemaId;
     private Collection<PlaceDto> places;
     private Collection<FilmProjectionDto> filmProjections;
 }

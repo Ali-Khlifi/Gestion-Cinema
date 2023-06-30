@@ -14,8 +14,9 @@ import java.util.List;
 @Mapper(config = MapperConfig.class)
 public interface PlaceMapper {
 
-    @Mapping(target = "salle", ignore = true)
+    @Mapping(source = "salle.id", target = "salleId")
     PlaceDto toDto(Place placeEntity);
+    @Mapping(source = "salleId", target = "salle.id")
     Place toEntity(PlaceDto dto);
 
     PlaceDto toDto(PlaceOpenApiModel model);
@@ -23,6 +24,8 @@ public interface PlaceMapper {
     PlaceOpenApiModel toOpenApiModel(PlaceDto dto);
 
     List<PlaceOpenApiModel> toOpenApiModelList(List<PlaceDto> listPlaceDto);
+
+    @Mapping(source = "salleId", target = "salle.id")
     void update(@Valid PlaceDto source, @MappingTarget Place target);
 
 }

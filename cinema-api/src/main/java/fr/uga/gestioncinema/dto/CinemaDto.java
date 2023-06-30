@@ -11,5 +11,5 @@ public class CinemaDto {
     private double longitude, latitude, altitude;
     private int nombreSalles;
 
-    private VilleDto ville;
+    private Long villeId;
 }

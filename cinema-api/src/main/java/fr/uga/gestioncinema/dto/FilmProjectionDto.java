@@ -17,7 +17,7 @@ public class FilmProjectionDto {
     private Long id;
     private Date dateProjection;
     private double prix;
-    private SalleDto salle;
+    private Long salleId;
     private FilmDto film;
     private SeanceDto seance;
 }

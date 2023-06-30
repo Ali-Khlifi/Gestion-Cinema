@@ -199,7 +199,8 @@ components:
           - description
           - photo
           - dateSortie
-          - category
+          - filmProjections
+          - categoryId
       properties:
         id:
           type: integer
@@ -218,20 +219,26 @@ components:
         dateSortie:
           type: string
           format: date-time
-        category:
-          $ref: '#/components/schemas/CategoryOpenApiModel'
+        filmProjections:
+          type: array
+          items:
+            $ref: '#/components/schemas/FilmProjectionOpenApiModel'
+        categoryId:
+          type: integer
+          format: int64
 
-    'CategoryOpenApiModel':
+    'FilmProjectionOpenApiModel':
       type: object
-      required:
-        - name
       properties:
         id:
           type: integer
           format: int64
-        name:
+        dateProjection:
           type: string
-          maxLength: 75
+          format: date-time
+        prix:
+          type: number
+          format: double
 
     Error:
       description: 'format message for error return HTTP'

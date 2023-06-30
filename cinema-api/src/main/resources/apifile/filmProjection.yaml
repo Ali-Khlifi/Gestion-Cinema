@@ -131,7 +131,7 @@ components:
           - dateProjection
           - prix
           - film
-          - salle
+          - salleId
           - seance
       properties:
         id:
@@ -145,8 +145,9 @@ components:
           format: double
         film:
           $ref: '#/components/schemas/FilmOpenApiModel'
-        salle:
-          $ref: '#/components/schemas/SalleOpenApiModel'
+        salleId:
+          type: integer
+          format: int64
         seance:
           $ref: '#/components/schemas/SeanceOpenApiModel'
 
@@ -160,7 +161,7 @@ components:
         - description
         - photo
         - dateSortie
-        - category
+        - categoryId
       properties:
         id:
           type: integer
@@ -179,35 +180,9 @@ components:
         dateSortie:
           type: string
           format: date-time
-        category:
-          $ref: '#/components/schemas/CategoryOpenApiModel'
-
-    'CategoryOpenApiModel':
-      type: object
-      required:
-        - name
-      properties:
-        id:
+        categoryId:
           type: integer
           format: int64
-        name:
-          type: string
-          maxLength: 75
-
-    'SalleOpenApiModel':
-      description: 'Object representing a currently accessible ressource'
-      type: object
-      required:
-        - name
-        - nombrePlaces
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        nombrePlaces:
-          type: integer
 
     'SeanceOpenApiModel':
       type: object

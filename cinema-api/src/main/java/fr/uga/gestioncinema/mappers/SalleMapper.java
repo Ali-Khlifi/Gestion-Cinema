@@ -11,11 +11,14 @@ import org.openapitools.model.SalleOpenApiModel;
 
 import java.util.List;
 
-@Mapper(config = MapperConfig.class, uses = {PlaceMapper.class})
+@Mapper(config = MapperConfig.class, uses = {PlaceMapper.class, CinemaMapper.class})
 public interface SalleMapper {
 
+    @Mapping(source = "cinema.id", target = "cinemaId")
     @Mapping(target = "filmProjections", ignore = true)
     SalleDto toDto(Salle salleEntity);
+
+    @Mapping(source = "cinemaId", target = "cinema.id")
     @Mapping(target = "filmProjections", ignore = true)
     Salle toEntity(SalleDto dto);
 
@@ -25,6 +28,8 @@ public interface SalleMapper {
     SalleOpenApiModel toOpenApiModel(SalleDto dto);
 
     List<SalleOpenApiModel> toOpenApiModelList(List<SalleDto> listSalleDto);
+
+    @Mapping(source = "cinemaId", target = "cinema.id")
     void update(@Valid SalleDto source, @MappingTarget Salle target);
 
 }
