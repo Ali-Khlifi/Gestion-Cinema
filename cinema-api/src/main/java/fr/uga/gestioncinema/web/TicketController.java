@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class TicketController implements TicketApi {
     private final TicketService service;
     private final TicketMapper mapper;

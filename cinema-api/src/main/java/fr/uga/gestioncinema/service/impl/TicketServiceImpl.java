@@ -12,6 +12,7 @@ import fr.uga.gestioncinema.service.CinemaService;
 import fr.uga.gestioncinema.service.TicketService;
 import fr.uga.gestioncinema.web.formes.TicketForm;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.List;
 
 import static fr.uga.gestioncinema.utils.StringUtils.Exceptions.NO_DATA;
 
-
+@Primary
 @Service
 @RequiredArgsConstructor
 public class TicketServiceImpl implements TicketService {
