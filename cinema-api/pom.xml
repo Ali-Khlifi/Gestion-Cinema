@@ -300,6 +300,18 @@
                             </importMappings>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>ticket</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${apifile}/ticket.yaml</inputSpec>
+                            <importMappings>
+                                <importMapping>ticketPage=${springpage}</importMapping>
+                            </importMappings>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
