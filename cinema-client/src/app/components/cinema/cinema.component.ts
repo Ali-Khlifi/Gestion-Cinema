@@ -78,7 +78,7 @@ export class CinemaComponent implements OnInit{
     console.log(this.selectedTickets);
 
   }
-  getTicketClass(t: any) {
+  getTicketPlace(t: any) {
     let str ="btn ticket ";
     if(t.reservee == true){
       str +=" btn-danger'"
