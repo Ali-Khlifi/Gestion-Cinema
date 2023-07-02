@@ -12,6 +12,9 @@ import { HomeComponent } from './components/home/home.component';
 import { SallesComponent } from './components/salles/salles.component';
 import { SeancesComponent } from './components/seances/seances.component';
 import { FilmProjectionsComponent } from './components/film-projections/film-projections.component';
+import { FilmsComponent } from './components/films/films.component';
+import { EvenementsComponent } from './components/evenements/evenements.component';
+import { OffresComponent } from './components/offres/offres.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { FilmProjectionsComponent } from './components/film-projections/film-pro
     HomeComponent,
     SallesComponent,
     SeancesComponent,
-    FilmProjectionsComponent
+    FilmProjectionsComponent,
+    FilmsComponent,
+    EvenementsComponent,
+    OffresComponent
   ],
   imports: [
     BrowserModule,
