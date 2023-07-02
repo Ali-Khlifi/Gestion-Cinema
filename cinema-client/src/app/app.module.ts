@@ -5,13 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CinemaComponent } from './components/cinema/cinema.component';
 import {HttpClientModule} from "@angular/common/http";
-import {CinemaService} from "./services/cinema.service";
+import {CinemaService} from "./services/cinema/cinema.service";
 import {FormsModule} from "@angular/forms";
+import { VillesComponent } from './components/villes/villes.component';
+import { HomeComponent } from './components/home/home.component';
+import { SallesComponent } from './components/salles/salles.component';
+import { SeancesComponent } from './components/seances/seances.component';
+import { FilmProjectionsComponent } from './components/film-projections/film-projections.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CinemaComponent
+    CinemaComponent,
+    VillesComponent,
+    HomeComponent,
+    SallesComponent,
+    SeancesComponent,
+    FilmProjectionsComponent
   ],
   imports: [
     BrowserModule,
