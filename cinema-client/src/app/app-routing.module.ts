@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ComponentFixture} from "@angular/core/testing";
-import {CinemaComponent} from "./components/cinema/cinema.component";
-import {FilmsComponent} from "./components/films/films.component";
-import {EvenementsComponent} from "./components/evenements/evenements.component";
-import {OffresComponent} from "./components/offres/offres.component";
+import {CinemaComponent} from "./pages/cinema/cinema.component";
+import {FilmsComponent} from "./pages/films/films.component";
+import {EvenementsComponent} from "./pages/evenements/evenements.component";
+import {OffresComponent} from "./pages/offres/offres.component";
 
 const routes: Routes = [
   {
