@@ -3,7 +3,7 @@
     <h4>liste des villes</h4>
     <ul *ngIf="villes" class="list-group">
       <!-- Affichage des ville et selection de la ville courante -->
-      <li [ngClass]="v == currentVille?'active' : ''" *ngFor="let v of villes._embedded.villes" class="list-group-item clickable"
+      <li [ngClass]="v == currentVille?'active' : ''" *ngFor="let v of villes" class="list-group-item clickable"
           (click)="OnGetCinema(v)">
         {{v.name}}
       </li>
@@ -15,7 +15,7 @@
       <div class="panel-body">
         <ul *ngIf="cinemas" class="nav nav-pills">
           <!-- Affichage des cinemas et selection du projection courant -->
-          <li [ngClass]="c == currentCinema? 'active': ''" *ngFor="let c of cinemas._embedded.cinemas" class="clickable">
+          <li [ngClass]="c == currentCinema? 'active': ''" *ngFor="let c of cinemas" class="clickable">
             <a (click)="OnGetSalles(c)"> {{c.name}} </a>
           </li>
         </ul>

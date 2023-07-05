@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import { VilleService } from 'src/app/services/ville/ville.service';
 import {CinemaService} from "../../services/cinema/cinema.service";
+import {Ville} from "../../models/ville.model";
+import { Cinema } from 'src/app/models/cinema.model';
 
 @Component({
   selector: 'app-cinema',
@@ -7,9 +10,9 @@ import {CinemaService} from "../../services/cinema/cinema.service";
   styleUrls: ['./cinema.component.css']
 })
 export class CinemaComponent implements OnInit{
-  public villes:any;
-  public cinemas:any;
-  public currentVille :any;
+  public villes: Ville[] = [];
+  public cinemas: Cinema[] = [];
+  public currentVille : any;
   public currentCinema :any;
   public salles:any;
   public filmProjections: any;
@@ -17,22 +20,18 @@ export class CinemaComponent implements OnInit{
   tickets: any;
   currentSeance: any;
   public selectedTickets: any[] = [];
-  constructor( public serviceCinema: CinemaService) {
-  }
+  constructor( public serviceCinema: CinemaService,
+               public  villeService: VilleService) {}
   ngOnInit() {
-    this.serviceCinema.getVilles()
-      .subscribe(data=>{
-        this.villes = data;
-      })
+    this.villeService.getVilles()
+      .subscribe(villes => this.villes = villes);
   }
-  OnGetCinema(v: any) {
-    this.currentVille = v;
-    this.salles = undefined;  // vider la liste des salles
-    this.serviceCinema.getCinema(v)
-      .subscribe(data=>{
+  OnGetCinema(ville: Ville) {
+    this.currentVille = ville;
+    //this.salles = undefined;  // vider la liste des salles
+    this.serviceCinema.getCinema(ville.name)
+      .subscribe(data =>{
         this.cinemas = data;
-      }, error => {
-        console.log(error);
       })
   }
 
