@@ -1,5 +1,7 @@
 package fr.uga.gestioncinema.web;
 
+import fr.uga.gestioncinema.dto.CinemaDto;
+import fr.uga.gestioncinema.dto.VilleDto;
 import fr.uga.gestioncinema.mappers.CinemaMapper;
 import fr.uga.gestioncinema.mappers.FilmMapper;
 import fr.uga.gestioncinema.service.CinemaService;
@@ -58,6 +60,13 @@ public class CinemaController implements CinemaApi {
     public ResponseEntity<Void> delete(Long id) throws Exception {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+    @Override
+    public ResponseEntity<List<CinemaOpenApiModel>> findByVille(String villeName) throws Exception {
+        VilleDto villeDto = VilleDto.builder().build();
+        villeDto.setName(villeName);
+        List<CinemaDto> cinemas = service.findByVille(villeDto); // Chercher les cinémas
+        return ResponseEntity.ok().body(mapper.toOpenApiModelList(cinemas));
     }
 
 }

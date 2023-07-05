@@ -122,6 +122,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /cinema/byVille:
+    get:
+      tags:
+        - Cinema
+      summary: 'Cinemas by Ville'
+      operationId: findByVille
+      parameters:
+        - name: ville
+          in: query
+          description: 'Find cinemas by its ville'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CinemaOpenApiModel'
+        '404':
+          description: 'NOT FOUND'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
 components:
   schemas:
     'CinemaOpenApiModel':
