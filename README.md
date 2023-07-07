@@ -13,3 +13,6 @@ Le dépôt est structuré en deux parties principales :
 Nous encourageons les contributions à ce projet. Si vous souhaitez contribuer, merci de consulter le fichier README dans le répertoire correspondant (`cinema-api` ou `cinema-client`) pour obtenir des informations détaillées sur la manière de le faire.
 
 Si vous avez des questions, des problèmes ou des suggestions d'amélioration, n'hésitez pas à ouvrir une issue.
+
+@Ali KHLIFI
+Développeur Java
