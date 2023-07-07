@@ -14,5 +14,5 @@ Nous encourageons les contributions à ce projet. Si vous souhaitez contribuer, 
 
 Si vous avez des questions, des problèmes ou des suggestions d'amélioration, n'hésitez pas à ouvrir une issue.
 
+## Auteur
 @Ali KHLIFI
-Développeur Java
