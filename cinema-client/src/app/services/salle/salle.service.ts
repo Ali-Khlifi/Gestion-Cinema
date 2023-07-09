@@ -15,8 +15,8 @@ export class SalleService {
   urlSalles = this.urlAPI + "/salle"
   urlSalleByCinema = this.urlAPI + "/salle/byCinema"
 
-  public getSalles(cinema: string) : Observable<Salle[]>{
 
+  public getSalles(cinema: string) : Observable<Salle[]>{
     let params = new HttpParams();
     params = params.append('cinema', cinema);
     return this.http.get<Salle[]> (this.urlSalleByCinema, {params: params}).pipe(take(1));

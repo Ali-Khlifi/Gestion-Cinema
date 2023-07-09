@@ -1,1 +1,17 @@
-<p>salles works!</p>
+
+
+<div class="row" *ngIf="salles">
+  <div *ngFor="let s of salles">
+    <div class="col-md-6">
+      <div class = "panel panel-default">
+        <div class = "panel-heading">
+          {{s.name}}
+        </div>
+        <div>
+          <app-film-projections></app-film-projections>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

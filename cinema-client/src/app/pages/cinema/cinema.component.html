@@ -19,6 +19,7 @@
             <a (click)="OnGetSalles(c)"> {{c.name}} </a>
           </li>
         </ul>
+        <app-salles [cinema]="currentCinema"></app-salles>
         <!-- Affichage des salles par cinema-->
         <div class="row" *ngIf="salles">
           <div *ngFor="let s of salles._embedded.salles">

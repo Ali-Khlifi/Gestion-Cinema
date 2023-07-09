@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import { VilleService } from 'src/app/services/ville/ville.service';
 import {CinemaService} from "../../services/cinema/cinema.service";
 import {Ville} from "../../models/ville.model";
@@ -10,6 +10,7 @@ import { Cinema } from 'src/app/models/cinema.model';
   styleUrls: ['./cinema.component.css']
 })
 export class CinemaComponent implements OnInit{
+
   public villes: Ville[] = [];
   public cinemas: Cinema[] = [];
   public currentVille : any;
@@ -28,14 +29,19 @@ export class CinemaComponent implements OnInit{
   }
   OnGetCinema(ville: Ville) {
     this.currentVille = ville;
-    //this.salles = undefined;  // vider la liste des salles
+    this.salles = undefined;  // vider la liste des salles
     this.serviceCinema.getCinema(ville.name)
       .subscribe(data =>{
         this.cinemas = data;
       })
   }
+  OnGetSalles(c: Cinema){
+    this.currentCinema = c;
+  }
 
-  OnGetSalles(c:any) {
+
+
+  /*OnGetSalles(c:any) {
     this.currentCinema = c;
     this.serviceCinema.getSalles(c)
       .subscribe(data=>{
@@ -52,7 +58,7 @@ export class CinemaComponent implements OnInit{
       }, error => {
         console.log(error);
       })
-  }
+  }*/
 
   OnGetTicketsPlaces(p:any) {
     this.currentProject = p;

@@ -10,11 +10,11 @@ import {FormsModule} from "@angular/forms";
 import { VillesComponent } from './components/villes/villes.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SallesComponent } from './components/salles/salles.component';
-import { SeancesComponent } from './components/seances/seances.component';
 import { FilmProjectionsComponent } from './components/film-projections/film-projections.component';
 import { FilmsComponent } from './pages/films/films.component';
 import { EvenementsComponent } from './pages/evenements/evenements.component';
 import { OffresComponent } from './pages/offres/offres.component';
+import { TicketProjectionsComponent } from './components/ticket-projections/ticket-projections.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +23,11 @@ import { OffresComponent } from './pages/offres/offres.component';
     VillesComponent,
     HomeComponent,
     SallesComponent,
-    SeancesComponent,
     FilmProjectionsComponent,
     FilmsComponent,
     EvenementsComponent,
-    OffresComponent
+    OffresComponent,
+    TicketProjectionsComponent
   ],
   imports: [
     BrowserModule,
