@@ -2,7 +2,7 @@
   <div class="col-md-3">
     <h4>liste des villes</h4>
     <ul *ngIf="villes" class="list-group">
-      <!-- Affichage des ville et selection de la ville courante -->
+      <!-- Affichage des villes et selection de la ville courante -->
       <li [ngClass]="v == currentVille?'active' : ''" *ngFor="let v of villes" class="list-group-item clickable"
           (click)="OnGetCinema(v)">
         {{v.name}}
