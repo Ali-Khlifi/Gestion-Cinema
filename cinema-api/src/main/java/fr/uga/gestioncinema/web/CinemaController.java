@@ -65,7 +65,7 @@ public class CinemaController implements CinemaApi {
     public ResponseEntity<List<CinemaOpenApiModel>> findByVille(String villeName) throws Exception {
         VilleDto villeDto = VilleDto.builder().build();
         villeDto.setName(villeName);
-        List<CinemaDto> cinemas = service.findByVille(villeDto); // Chercher les cinémas
+        List<CinemaDto> cinemas = service.findByVille(villeDto);
         return ResponseEntity.ok().body(mapper.toOpenApiModelList(cinemas));
     }
 

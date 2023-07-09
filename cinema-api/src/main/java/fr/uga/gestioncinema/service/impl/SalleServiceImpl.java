@@ -53,6 +53,14 @@ public class SalleServiceImpl implements SalleService {
     }
 
     @Override
+    public List<SalleDto> findByCinema(CinemaDto dto) {
+        return repository.findByCinemaName(dto.getName())
+                .stream()
+                .map(mapper::toDto)
+                .toList();
+    }
+
+    @Override
     public void delete(Long id) {
         repository.deleteById(id);
 

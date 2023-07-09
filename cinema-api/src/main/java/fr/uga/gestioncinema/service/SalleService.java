@@ -11,5 +11,6 @@ public interface SalleService {
     SalleDto save(@Valid SalleDto dto);
     List<SalleDto> fetchAll();
     SalleDto update(@Valid SalleDto dto);
+    List<SalleDto> findByCinema(CinemaDto dto);
     void delete(Long id);
 }
