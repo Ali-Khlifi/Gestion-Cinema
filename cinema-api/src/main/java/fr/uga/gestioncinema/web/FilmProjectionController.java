@@ -56,6 +56,10 @@ public class FilmProjectionController implements FilmProjectionApi {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+    @Override
+    public ResponseEntity<List<FilmProjectionOpenApiModel>> findBySalle(Long id) throws Exception {
+        return ResponseEntity.ok().body(mapper.toOpenApiModelList(service.findBySalle(id)));
+    }
 
 }
 

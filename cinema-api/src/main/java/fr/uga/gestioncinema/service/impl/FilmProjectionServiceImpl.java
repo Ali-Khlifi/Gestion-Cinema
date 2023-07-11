@@ -37,6 +37,13 @@ public class FilmProjectionServiceImpl implements FilmProjectionService {
                 .map(mapper::toDto)
                 .toList();
     }
+    @Override
+    public List<FilmProjectionDto> findBySalle(Long salleId) {
+        return repository.findBySalle_Id(salleId)
+                .stream()
+                .map(mapper::toDto)
+                .toList();
+    }
 
     @Override
     public FilmProjectionDto update(FilmProjectionDto dto) {
